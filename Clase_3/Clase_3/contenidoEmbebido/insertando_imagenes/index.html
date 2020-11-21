@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Imagenes</title>
+    <style>
+      picture {
+        width: 300px;
+      }
+      picture * {
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Formatos de imagenes 
+        Vectores:
+        .svg No hay otro formato de vectores soportado por el navegador, hay .ai .xd .eps etcetera
+        El unico formato aceptado en web es .svg
+        
+        Mapa de bits:
+        .jpg o.jpeg son buenos para fotos
+        .png  para fotos o imagenes detalladas con transparencias (los logos no van con png, van con svg)
+        .gif para animaciones
+        .webp este formato combina lo mejor entre jpg y png, es bastante liviano y soporta transparencia y
+        ya es soportado por todos los navegadores. Lo unico malo con webp es que ha demorado en
+        ser compatible y muchos programas de edicion no te exportan a webp y hay que usar otras herramientas
+
+        Y por eso la gente se va por jpg y png
+
+        ! usar caniuse.com
+
+        El espacio es importante, un png siempre pesa mas que un jpg y un svg pesa mucho menos que un png
+
+        Ahora mostrare ejemplos
+        Moraleja, intenta irte siempre por lo que pesa menos.
+
+        Mostrar 
+        unsplash
+        flaticon Pago
+        iconscout Pago
+        undraw Gratis
+        humans design
+
+
+        
+        TODO: undraw y bajar svg
+        TODO: ir a unsplash y bajar una foto
+    -->
+    <!--     <h2>Vector</h2>
+    <img src="img/files.svg" alt="Mujer frente a archivos" width="300" />
+    <h2>Auto</h2>
+    <img src="img/mustang.jpg" alt="Mustang estacionado" width="300" /> -->
+    <!-- Importante poner alt por muchas razones, no es obligatorio
+    
+    1. Describe la imagen
+    2. Google usa esa descripcion cuando alguien busca una imagen, con eso la consigue
+    3. Las personas con discapacidad, usan programas como lectores que le dicen que 
+    existe una foto que muestra algo en particular
+
+    Hay 2 atributos que no se recomienda usar, mejor usar CSS
+
+    !width y height
+  
+    mostrar width y height, solo poner uno y el navegador respeta la relacion de aspecto
+
+    -->
+    <!-- 
+    <h2>Goku</h2> -->
+    <!-- Traer imagenes desde fuera -->
+    <!--     <img
+      src="https://depor.com/resizer/jfdLTCSwYL78Pb9mULUCBF3VkUE=/580x330/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/VR4KBQ5P7ZCZPLI7SBXGKLK7CM.jpg"
+      alt="El mesias sonriendo"
+      width="300"
+    /> -->
+    <!-- Si la pagina es confiable, puedes hacer esto, confiable no es que sea una 
+    pagina maliciosa, sino que no se que pagina es, que tal que esa pagina mañana muere
+
+    TODO: quitar un caracter y mostrar como se ve una imagen rota
+  
+  -->
+
+    <!-- Un concepto importante que debes manejar en imagenes es  
+  
+    !DevicePixelRatio
+    *que es la relacion entre los pixeles reales que tiene la pantalla (fabricante), 
+    es decir los fisicos vs los pixeles que tienes en el viewport o los pixeles que tienes
+    para mistrar contenido
+
+    mira:
+
+    Yo tengo imagenes de 300px de ancho, porque en mi codigo les puse 300px, 
+    fijate como son tan grandes, porque tengo puesto el ZOOM, 
+
+    todo: HAcer zoom a 450%
+    TODO: si yo presiono CNTL, SHIFT,I
+    TODO: Escribir devicePixelRatio
+    TODO: Dira 4.5, eso significa que por cada pixel, se ha multiplicado por 4.5
+
+    lo mismo sucede en el telefono
+     el fabricante ha puesto 1080 x1920 de resolucion, el fabricante, los pixeles reales 
+     que tiene la pantalla
+
+     PEROOO cuando yo diseño una pagina web, realmente tengo 360 pixeles aqui x 640
+
+     es como si esos 640 hacen zoom hasta llegar a los 1920 x 1080 porque practicamente hay
+     3 pixeles fisicos por cada pixel de pantalla de resolucion
+
+     De tal manera de que si te acercas demasiado, no eres capaz de ver los pixeles,
+     cosa que si pasa en uan compu
+
+
+      Pixeles de viewport (PV) son inventadas
+      Son los pixeles disponibles para mostrar contenido
+
+      Pixeles Reales 
+        Piexeles fisicos implementados por el fabricante de la pantalla
+
+      devicePixelRatio = PR/PV
+
+      Si hay mas Pixeles reales que Pixeles de Viewport se vera increiblemente nitido,
+      eso pasa con todos los telefonos, hay laps con pantallas de 4k en un espacio chiquito
+      eso lo hacen aumentando el devicePixelRatio, 
+
+      Lo que importa en web es el viewport, el PV, no tanto los pixeles reales
+
+      origina que nosotros estemos mirando el devicePixelRatio de cada dispositivo
+
+      Si pongo una imagen de 300px sen un telefono se puede ver muy fea
+      Como asi? si el telefono puede tener 360 px de ancho, 
+      una imagen de 300px se debe ver bien, no?
+
+      Si pero de 300 de ancho, pero realmente los pixeles reales son 1080, entonces se esta estirando
+
+      Es como estirar una imagen
+
+      Necesitamos saber el devicePixelRatio de los dispotivos
+
+  -->
+    <!--     <h2>SRCSET</h2>
+ -->
+    <!-- Con srcset podemos pasar varias imagenes determinando el devicePixelRatio -->
+    <!-- Lo ideal es usar la misma imagen con diferentes tamanos -->
+    <!--     <img
+      srcset="img/fotoDemo.jpg 2x, img/mustang.jpg 4x"
+      src="img/files.svg"
+      alt=""
+    /> -->
+
+    <!--    <img
+      srcset="img/switch_Grande.jpg 2x, img/switch.svg 4x"
+      src="img/switch_800.png"
+      alt=""
+    />
+
+    <hr />
+    <h3>Sin srcSet</h3>
+    <h5>800px</h5>
+    <img src="img/switch_800.png" alt="" />
+    <h5>1280x700</h5>
+    <img src="img/switch_Grande.jpg" alt="" />
+    <h5>256px</h5>
+    <img
+      src="https://is1-ssl.mzstatic.com/image/thumb/Purple114/v4/fe/65/7b/fe657bb7-47d4-5ede-662a-586ba56c37d4/source/256x256bb.jpg"
+      alt=""
+    />
+
+    <script>
+      alert(window.devicePixelRatio);
+    </script> -->
+
+    <!-- Picture -->
+
+    <!-- Se lee de arriba hacia abajo -->
+
+    <!-- Similar a srcset
+    
+      empezamos con picture como padre
+
+      y los hijos son source y el default es img
+
+      para especificar condicionantes con el atributo media
+    
+      HAY QUE PONER SIEMPRE PRIMERO EL MAS GRANDE, 
+      QUE PASA SI LO PONEMOS AL REVES?
+    
+      No cambia nunca, porque?
+
+      Si se cumple la primera condicion, ya no lee lo demas
+      Es preferible de mas grande a mas pequeño
+    -->
+
+    <picture>
+      <source srcset="img/files.svg" media="(min-width:800px)" />
+      <source srcset="img/switch_800.png" media="(min-width:400px)" />
+      <img src="img/mustang.jpg" alt="" />
+    </picture>
+
+    <!-- Figure es una trampa pero no es para imagen -->
+    <figure>
+      <!-- reprensenta un contenido que puede cortar
+      un contenido principal pero forma parte de el
+    
+    Como para poner una imagen con una descripcion 
+  o una tabla html con información o un trozo de un codigo
+-->
+      <img src="img/mustang.jpg" alt="" width="400" />
+      <figcaption>
+        <p>Foto de un vehiculo deportivo</p>
+      </figcaption>
+    </figure>
+
+    <!-- Audio y video -->
+
+    <!-- Es muy sencillo, solo necesitas la etiqueta video -->
+
+    <!-- Dejamos la etiqueta video con el src
+
+        No se reproduce, parece una imagen
+        Para poder reproductir a nuestro antojo
+        necesitamos el atributo controls
+    
+      -->
+    <video
+      src="video/video_preview_h264.mp4"
+      width="800"
+      controls
+      poster="https://cdn.topgear.es/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2018/06/circuito-drift-mas-loco-mundo-estonia.jpg?itok=9H5wI39r"
+      autoplay
+      muted
+    ></video>
+    <!-- autoplay esta desactivado en algunos navegadores
+      la mayoria bloquea el autoplay y habia musica que se reproducia sola
+      y era molesto
+    -->
+
+    <!-- Audio sin controls, no se ve nada, poster no le puedes poner
+
+    -->
+    <audio src="audio/hiphop.wav" controls></audio>
+
+    <!-- Consejos:
+    
+      Recomoendable que tus audios o videos vengan de algun
+      lugar externo como youtube u otros lados
+
+      un video mal codificado puede pesarte mucho
+
+      mejor usar un servicio externo para alojar ahi videos
+      y no usar la etiqueta asi.
+
+      Si tienes que usar video Asegurate que sea mp4 y el codec h264
+      
+    -->
+  </body>
+</html>
